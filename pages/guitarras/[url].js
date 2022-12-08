@@ -65,8 +65,8 @@ export default function Producto({guitarra, agregarCarrito}) {
 
 export async function getStaticPaths() {
     const respuesta = await fetch(`${process.env.API_URL}/guitarras`)
-    const { data } = await respuesta.json()
-    const paths = data.map(guitarra => ({
+    const {data: guitarras } = await respuesta.json()
+    const paths = guitarras.map(guitarra => ({
         params: {
             url: guitarra.attributes.url
         }
